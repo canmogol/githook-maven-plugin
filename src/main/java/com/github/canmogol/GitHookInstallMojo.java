@@ -1,4 +1,4 @@
-package org.sandbox;
+package com.github.canmogol;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;

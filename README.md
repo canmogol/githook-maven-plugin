@@ -40,6 +40,9 @@ To configure hooks provide the following configuration for the execution:
 NOTE: The plugin rewrites hooks.
 
 ## Usage Example
+
+Original:
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -55,6 +58,52 @@ NOTE: The plugin rewrites hooks.
                 <groupId>org.sandbox</groupId>
                 <artifactId>githook-maven-plugin</artifactId>
                 <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <configuration>
+                            <hooks>
+                                <pre-commit>
+                                    echo running validation build
+                                    exec mvn clean install
+                                </pre-commit>
+                            </hooks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+JitPack Released:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.sandbox</groupId>
+    <artifactId>githook-test</artifactId>
+    <version>1.0.0</version>
+    
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.canmogol</groupId>
+                <artifactId>githook-maven-plugin</artifactId>
+                <version>2.0.0</version>
                 <executions>
                     <execution>
                         <goals>
